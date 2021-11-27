@@ -3,15 +3,17 @@ using JSON
 
 
 
+
+
 getOSname()
 
-data = getInstallableSolcVersions()
-version = collect(keys(data))[1]
+# data = getInstallableSolcVersions()
+# version = collect(keys(data))[1]
 
-filename = Dict(version => data[version])
-test = JSON.json(filename)
+# filename = Dict(version => data[version])
+# test = JSON.json(filename)
 
-test = JSON.json(data)
+# test = JSON.json(data)
 
 
 installSolc("latest")

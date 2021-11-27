@@ -1,12 +1,6 @@
 # This file contains functions to install solc.js with NodeJS.
 
 
-
-# SOURCE_DOWNLOAD_BASE = "https://github.com/ethereum/solidity/releases/download/v{}/{}"
-# GITHUB_RELEASES = "https://api.github.com/repos/ethereum/solidity/releases?per_page=100"
-
-# SOLCX_BINARY_PATH_VARIABLE = "SOLCX_BINARY_PATH"
-
 """
     function getOSname()
 This function returns the OS name for the user.
@@ -65,7 +59,9 @@ function installSolc(version::String)
 
     url = string("https://solc-bin.ethereum.org/",OS,"-amd64/",filename)
     
-    content = downloadSolc(url)
+    downloadSolc(url)
+
+    installSolcUnix(filename)
 
 end
 
@@ -77,17 +73,19 @@ This function download the solidity compiler version.
 function downloadSolc(url::String)
     
     r = HTTP.request("GET", url)
-    HTTP.download(url, "test/")
-    println(r.status)
+    HTTP.download(url, "solcv/")
 end
 
 
 """
-    function installSolcUnix()
+    function installSolcUnix(filename)
 Installator for Unix system.
 """
-function installSolcUnix(version::String, filename::String)
+function installSolcUnix(filename::String)
 
-    download = "dd"
+    run(`chmod a+x $(string("solcv/",filename))`)
+
+    run(`./$(string("solcv/",filename))`);
+
 
 end

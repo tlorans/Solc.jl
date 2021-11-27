@@ -11,9 +11,12 @@ module Solc
     export 
     getOSname,
     getInstallableSolcVersions,
-    installSolc
+    installSolc,
+
+    solcCompiler
 
     include("install.jl")
+    include("compiler.jl")
 
     function __init__()
 
